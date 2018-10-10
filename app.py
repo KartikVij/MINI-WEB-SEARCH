@@ -23,13 +23,13 @@ def query(data):
 @app.route("/about")
 def about():
     return render_template("about.html")
-
+    #reading webpage 
 def get_page():
     sauce = urllib.request.urlopen("https://www.google.com").read()
     soup = bs.BeautifulSoup(sauce, 'lxml')
     search_form = [form for form in soup.find_all('form') if form.get('action') == '/search']
     return str(search_form[0])
-
+    #searching the data
 def get_query(data):
     url = 'https://www.google.com/search?' + str(data)[2:len(str(data)) - 1]
     data = requests.get(url)
